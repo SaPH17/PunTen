@@ -1,0 +1,5 @@
+Homophonic,Jho123Star,First Pun,1657808194021,Punny indeed^KodokSalto^1657808194021;hahaha^Acexoul^1657808194021,My very punny pun
+Homographic,KodokSalto,Punny Pun,1657808194021,,Pun Tech,Tech
+Compound,Acexoul,Wu Shang,1657808194021,,Pun 1,Pun 2,Pun 3
+Recursive,KambingGanteng,I Love Kambing,1657808194021,,PunKambing,Kambing
+Visual,Jho123Star,Best Pun,1657808194021,,pun1.jpg
