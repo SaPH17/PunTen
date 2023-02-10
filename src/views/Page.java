@@ -93,7 +93,7 @@ public abstract class Page extends Scene{
 		profilePicture.setPreserveRatio(true);
 		
 		caretIcon = new ImageView();
-		LayoutHelper.configureImageViewFile(caretIcon, "./resources/icon-caret.png");
+		LayoutHelper.configureImageViewFile(caretIcon, "./resources/assets/icon-caret.png");
 		caretIcon.setFitWidth(15);
 		caretIcon.setPreserveRatio(true);
 		
@@ -231,7 +231,7 @@ public abstract class Page extends Scene{
 		});
 		
 		ImageView icon = new ImageView();
-		LayoutHelper.configureImageViewFile(icon, "./resources/icon-write.png");
+		LayoutHelper.configureImageViewFile(icon, "./resources/assets/icon-write.png");
 		icon.setFitWidth(30);
 		icon.setPreserveRatio(true);
 		

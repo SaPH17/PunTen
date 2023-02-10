@@ -45,6 +45,8 @@ public class HomePage extends Page{
 		container.prefWidthProperty().bind(scroll.widthProperty());
 		
 		this.root.getChildren().add(scroll);
+		
+		scroll.setVvalue(scroll.getVmax());
 	}
 
 	private ArrayList<Pun> loadPun() {

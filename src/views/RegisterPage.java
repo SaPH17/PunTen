@@ -59,7 +59,7 @@ public class RegisterPage extends Scene{
 		String password = passwordTxt.getText();
 		
 		if(username.length() < 5) {
-			ModalBuilder.createRegisterFailedModal("Username must be atleast 5 characters").showModal();
+			ModalBuilder.createRegisterFailedModal("Username must be at least 5 characters").showModal();
 			return false;
 		}
 		else if(!Database.getInstance().usernameAvailable(username)) {
@@ -67,11 +67,11 @@ public class RegisterPage extends Scene{
 			return false;
 		}
 		else if(password.length() < 5) {
-			ModalBuilder.createRegisterFailedModal("Password must be atleast 5 characters").showModal();
+			ModalBuilder.createRegisterFailedModal("Password must be at least 5 characters").showModal();
 			return false;
 		}
 		else if(!ValidationHelper.containAlphanum(password)) {
-			ModalBuilder.createRegisterFailedModal("Password must contains alphabet and number").showModal();
+			ModalBuilder.createRegisterFailedModal("Password must contains \n alphabet and number").showModal();
 			return false;
 		}
 		
@@ -117,19 +117,29 @@ public class RegisterPage extends Scene{
 	}
 	
 	private StackPane configureContainer() {
+		double w = 1280 * (Constant.SCREEN_WIDTH / 1920);
+		double h = 720 * (Constant.SCREEN_HEIGHT / 1080);
+		
+		double ww = 1400 * (Constant.SCREEN_WIDTH / 1920);
+		double hh = 700 * (Constant.SCREEN_HEIGHT / 1080);
+		
+		double mw = 315 * (Constant.SCREEN_WIDTH / 1920);
+		double mh = 150 * (Constant.SCREEN_HEIGHT / 1080); 
+		
 		content = new GridPane();
 		LayoutHelper.configureGridPaneConstraint(content, 1, 2);
-		LayoutHelper.addBorderRadius(content, Constant.SCREEN_WIDTH - 550, Constant.SCREEN_HEIGHT - 375, 20);
+		LayoutHelper.addBorderRadius(content, ww, hh, 16);
 
 		content.addColumn(0, bannerContainer);
 		content.addColumn(1, formContainer);
-		content.setPrefWidth(Constant.SCREEN_WIDTH - 500);
-		content.setPrefHeight(Constant.SCREEN_HEIGHT - 315);
+		content.setPrefWidth(w);
+		content.setPrefHeight(h);
 		
 		StackPane container = new StackPane();
 		container.getChildren().add(content);
-		container.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 16, 0, 0, 0);");	
-		StackPane.setMargin(container, new Insets(150, 315, 150, 315));
+		container.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 16, 0, 0, 0);");
+		StackPane.setMargin(container, new Insets(mh, mw, mh, mw));
+
 		return container;
 	}
 	
@@ -139,15 +149,17 @@ public class RegisterPage extends Scene{
 		LayoutHelper.configurePaneBackground(backgroundImage, Constant.ORANGE_PRIMARY, 
 				CornerRadii.EMPTY, Insets.EMPTY);
 		
-		backgroundImage.setPadding(new Insets(100));
+		backgroundImage.setPadding(new Insets(100 * (Constant.SCREEN_WIDTH / 1920)));
+		
+		double w = 500 * (Constant.SCREEN_WIDTH / 1920);
 		
 		ImageView imageView = new ImageView();
-		imageView.setFitWidth(500);
+		imageView.setFitWidth(w);
 		imageView.setPreserveRatio(true);
-        LayoutHelper.addBorderRadius(imageView, 500, 500, 20);
+        LayoutHelper.addBorderRadius(imageView, w, w, 20);
 
 		try {
-			InputStream stream = new FileInputStream("./resources/banner-register.jpeg");
+			InputStream stream = new FileInputStream("./resources/assets/banner-register.jpeg");
 			Image image = new Image(stream);
 			imageView.setImage(image);
 		} catch (FileNotFoundException e) {
@@ -163,36 +175,40 @@ public class RegisterPage extends Scene{
 	
 	private void initializeForm() {
 		GridPane titleContainer = new GridPane();
-		titleContainer.addRow(0, new Logo(300));
+		
+		double w = 300 * (Constant.SCREEN_WIDTH / 1920);
+
+		Logo logo = new Logo(w);
+		titleContainer.addRow(0, logo);
 		titleContainer.setPadding(new Insets(0, 0, 75, 0));
 		
-		Font font = Font.font("Verdana", FontWeight.NORMAL, 14);
+		Font font = Font.font("Verdana", FontWeight.NORMAL, 14 * (Constant.SCREEN_HEIGHT / 1080));
 
 		usernameTxt = new TextField();
 		passwordTxt = new PasswordField();
 		
-		usernameTxt.setPrefWidth(300);
-		usernameTxt.setPrefHeight(40);
+		usernameTxt.prefWidthProperty().bind(titleContainer.widthProperty());
+		usernameTxt.setPrefHeight(40 * (Constant.SCREEN_HEIGHT / 1080));
 		usernameTxt.setFont(font);
 		usernameTxt.setPromptText("Username");
 		usernameTxt.setBorder(new Border(new BorderStroke(Constant.ORANGE_PRIMARY, BorderStrokeStyle.SOLID, new CornerRadii(3), BorderWidths.DEFAULT)));
 		
-		passwordTxt.setPrefWidth(300);
-		passwordTxt.setPrefHeight(40);
+		passwordTxt.prefWidthProperty().bind(titleContainer.widthProperty());
+		passwordTxt.setPrefHeight(40 * (Constant.SCREEN_HEIGHT / 1080));
 		passwordTxt.setFont(font);
 		passwordTxt.setPromptText("Password");
 		passwordTxt.setBorder(new Border(new BorderStroke(Constant.ORANGE_PRIMARY, BorderStrokeStyle.SOLID, new CornerRadii(3), BorderWidths.DEFAULT)));
 
 		greetingLbl = new Label("Register now!");
-		greetingLbl.setFont(Font.font("Verdana", FontWeight.BOLD, 20));
+		greetingLbl.setFont(Font.font("Verdana", FontWeight.BOLD, 20 * (Constant.SCREEN_HEIGHT / 1080)));
 		usernameLbl = new Label("Username");
 		passwordLbl = new Label("Password");
 		
 		registerBtn = new Button("Register");
 		registerBtn.setStyle("-fx-background-color: #ff7750; -fx-text-fill: #fff;-fx-cursor: hand");
-		registerBtn.setPrefWidth(300);
-		registerBtn.setPrefHeight(40);
-		registerBtn.setFont(Font.font("Verdana", FontWeight.BOLD, 14));
+		registerBtn.prefWidthProperty().bind(titleContainer.widthProperty());
+		registerBtn.setPrefHeight(40 * (Constant.SCREEN_HEIGHT / 1080));
+		registerBtn.setFont(font);
 		
 		//LABEL REGISTER
 		Label loginLabel = new Label("Already have an account?");
@@ -222,7 +238,9 @@ public class RegisterPage extends Scene{
 
 		formContainer = new GridPane();
 		LayoutHelper.configurePaneBackground(formContainer, Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY);
-		formContainer.setPadding(new Insets(75, 125, 75, 125));
+		double px = 125  * (Constant.SCREEN_WIDTH / 1920);
+		double py = 75 * (Constant.SCREEN_HEIGHT / 1080);
+		formContainer.setPadding(new Insets(py, px, py, px));
 		formContainer.addRow(0, titleContainer);
 		formContainer.addRow(1, inputContainer);
 		formContainer.setAlignment(Pos.CENTER);

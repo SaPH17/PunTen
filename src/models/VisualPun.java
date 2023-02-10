@@ -12,6 +12,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import values.Constant;
 
 public class VisualPun extends Pun{
 	
@@ -27,9 +28,9 @@ public class VisualPun extends Pun{
 	public Pane getContentLayout() {
 		VBox container = new VBox();
 		
-		ImageView image = new ImageView();
-		LayoutHelper.configureImageViewFile(image, imageLink);
-		image.setFitWidth(600);
+		ImageView image = new ImageView(); 
+		LayoutHelper.configureImageViewFile(image, "./resources/puns/" + imageLink);
+		image.setFitWidth(600 * (Constant.SCREEN_WIDTH / 1920));
 		image.setPreserveRatio(true);
 
 		container.getChildren().add(image);

@@ -102,19 +102,29 @@ public class LoginPage extends Scene{
 	}
 
 	private StackPane configureContainer() {
+		double w = 1280 * (Constant.SCREEN_WIDTH / 1920);
+		double h = 720 * (Constant.SCREEN_HEIGHT / 1080);
+		
+		double ww = 1400 * (Constant.SCREEN_WIDTH / 1920);
+		double hh = 700 * (Constant.SCREEN_HEIGHT / 1080);
+		
+		double mw = 315 * (Constant.SCREEN_WIDTH / 1920);
+		double mh = 150 * (Constant.SCREEN_HEIGHT / 1080); 
+		
 		content = new GridPane();
 		LayoutHelper.configureGridPaneConstraint(content, 1, 2);
-		LayoutHelper.addBorderRadius(content, Constant.SCREEN_WIDTH - 550, Constant.SCREEN_HEIGHT - 375, 20);
+		LayoutHelper.addBorderRadius(content, ww, hh, 16);
 
 		content.addColumn(0, bannerContainer);
 		content.addColumn(1, formContainer);
-		content.setPrefWidth(Constant.SCREEN_WIDTH - 500);
-		content.setPrefHeight(Constant.SCREEN_HEIGHT - 315);
+		content.setPrefWidth(w);
+		content.setPrefHeight(h);
 		
 		StackPane container = new StackPane();
 		container.getChildren().add(content);
-		container.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 16, 0, 0, 0);");	
-		StackPane.setMargin(container, new Insets(150, 315, 150, 315));
+		container.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 16, 0, 0, 0);");
+		StackPane.setMargin(container, new Insets(mh, mw, mh, mw));
+
 		return container;
 	}
 	
@@ -124,15 +134,17 @@ public class LoginPage extends Scene{
 		LayoutHelper.configurePaneBackground(backgroundImage, Constant.ORANGE_PRIMARY, 
 				CornerRadii.EMPTY, Insets.EMPTY);
 		
-		backgroundImage.setPadding(new Insets(100));
+		backgroundImage.setPadding(new Insets(100 * (Constant.SCREEN_WIDTH / 1920)));
+		
+		double w = 500 * (Constant.SCREEN_WIDTH / 1920);
 		
 		ImageView imageView = new ImageView();
-		imageView.setFitWidth(500);
+		imageView.setFitWidth(w);
 		imageView.setPreserveRatio(true);
-        LayoutHelper.addBorderRadius(imageView, 500, 500, 20);
-
+        LayoutHelper.addBorderRadius(imageView, w, w, 20);
+        
 		try {
-			InputStream stream = new FileInputStream("./resources/banner-login.jpg");
+			InputStream stream = new FileInputStream("./resources/assets/banner-login.jpg");
 			Image image = new Image(stream);
 			imageView.setImage(image);
 		} catch (FileNotFoundException e) {
@@ -148,36 +160,40 @@ public class LoginPage extends Scene{
 	
 	private void initializeForm() {
 		GridPane titleContainer = new GridPane();
-		titleContainer.addRow(0, new Logo(300));
+		
+		double w = 300 * (Constant.SCREEN_WIDTH / 1920);
+
+		Logo logo = new Logo(w);
+		titleContainer.addRow(0, logo);
 		titleContainer.setPadding(new Insets(0, 0, 75, 0));
 		
-		Font font = Font.font("Verdana", FontWeight.NORMAL, 14);
+		Font font = Font.font("Verdana", FontWeight.NORMAL, 14 * (Constant.SCREEN_HEIGHT / 1080));
 
 		usernameTxt = new TextField();
 		passwordTxt = new PasswordField();
 		
-		usernameTxt.setPrefWidth(250);
-		usernameTxt.setPrefHeight(40);
+		usernameTxt.prefWidthProperty().bind(titleContainer.widthProperty());
+		usernameTxt.setPrefHeight(40 * (Constant.SCREEN_HEIGHT / 1080));
 		usernameTxt.setFont(font);
 		usernameTxt.setPromptText("Username");
 		usernameTxt.setBorder(new Border(new BorderStroke(Constant.ORANGE_PRIMARY, BorderStrokeStyle.SOLID, new CornerRadii(3), BorderWidths.DEFAULT)));
 		
-		passwordTxt.setPrefWidth(250);
-		passwordTxt.setPrefHeight(40);
+		passwordTxt.prefWidthProperty().bind(titleContainer.widthProperty());
+		passwordTxt.setPrefHeight(40 * (Constant.SCREEN_HEIGHT / 1080));
 		passwordTxt.setFont(font);
 		passwordTxt.setPromptText("Password");
 		passwordTxt.setBorder(new Border(new BorderStroke(Constant.ORANGE_PRIMARY, BorderStrokeStyle.SOLID, new CornerRadii(3), BorderWidths.DEFAULT)));
 
 		greetingLbl = new Label("Welcome back!");
-		greetingLbl.setFont(Font.font("Verdana", FontWeight.BOLD, 20));
+		greetingLbl.setFont(Font.font("Verdana", FontWeight.BOLD, 20 * (Constant.SCREEN_HEIGHT / 1080)));
 		usernameLbl = new Label("Username");
 		passwordLbl = new Label("Password");
 		
 		loginBtn = new Button("Login");
 		loginBtn.setStyle("-fx-background-color: #ff7750; -fx-text-fill: #fff; -fx-cursor: hand");
-		loginBtn.setPrefWidth(275);
-		loginBtn.setPrefHeight(40);
-		loginBtn.setFont(Font.font("Verdana", FontWeight.BOLD, 14));
+		loginBtn.prefWidthProperty().bind(titleContainer.widthProperty());
+		loginBtn.setPrefHeight(40 * (Constant.SCREEN_HEIGHT / 1080));
+		loginBtn.setFont(font);
 
 		//LABEL REGISTER
 		Label registerLabel = new Label("Not registered yet?");
@@ -185,7 +201,7 @@ public class LoginPage extends Scene{
 		registerBtn = new Button("Register Here");
 		registerBtn.setStyle("-fx-cursor: hand");
 		registerBtn.setBackground(null);
-		registerBtn.setFont(Font.font("Verdana", FontWeight.BOLD, 14));
+		registerBtn.setFont(Font.font("Verdana", FontWeight.BOLD, 14 * (Constant.SCREEN_HEIGHT / 1080)));
 		registerBtn.setUnderline(true);
 		registerBtn.setTextFill(Constant.ORANGE_PRIMARY);
 		
@@ -208,7 +224,9 @@ public class LoginPage extends Scene{
 
 		formContainer = new GridPane();
 		LayoutHelper.configurePaneBackground(formContainer, Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY);
-		formContainer.setPadding(new Insets(50, 125, 50, 125));
+		double px = 125  * (Constant.SCREEN_WIDTH / 1920);
+		double py = 75 * (Constant.SCREEN_HEIGHT / 1080);
+		formContainer.setPadding(new Insets(py, px, py, px));
 		formContainer.addRow(0, titleContainer);
 		formContainer.addRow(1, inputContainer);
 		formContainer.setAlignment(Pos.CENTER);

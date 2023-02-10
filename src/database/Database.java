@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -82,7 +83,16 @@ public class Database {
 			fetchPunCSV();
 		}
 		
-		return puns;
+		ArrayList<Pun> res = (ArrayList<Pun>) puns.clone();
+		
+		res.sort(new Comparator<Pun>() {
+
+			public int compare(Pun o1, Pun o2) {
+				return o2.getDate().compareTo(o1.getDate());
+			}
+		});
+		
+		return res;
 	}
 	
 	public void addPun(Pun pun) {
@@ -96,7 +106,7 @@ public class Database {
 			res += user.getStringFormat() + "\n";
 		}
 		try {
-			FileWriter wr = new FileWriter(new File("./data/users-asd.txt"), false);
+			FileWriter wr = new FileWriter(new File("./data/users.txt"), false);
 			wr.write(res, 0, res.length());
 			wr.close();
 		} catch (IOException e) {
@@ -125,7 +135,7 @@ public class Database {
 	public void writePunCSV() {
 		String res = "";
 		for (Pun pun : puns) {
-			String s = pun.getType() + "," + pun.getAuthor() + "," + pun.getTitle() + "," + pun.getDate().getTime();
+			String s = pun.getType() + "," + pun.getAuthor() + "," + pun.getTitle() + "," + pun.getDate().getTime() + ",";
 			
 			List<Comment> comments = pun.getComments();
 			for(int i = 0; i < comments.size(); i++) {
@@ -141,7 +151,7 @@ public class Database {
 		}
 		
 		try {
-			FileWriter wr = new FileWriter(new File("./data/puns-asd.txt"), false);
+			FileWriter wr = new FileWriter(new File("./data/puns.txt"), false);
 			wr.write(res, 0, res.length());
 			wr.close();
 		} catch (IOException e) {

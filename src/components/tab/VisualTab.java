@@ -55,7 +55,7 @@ public class VisualTab extends WriteTab{
 		preview = new ImageView();
 		preview.setFitHeight(150);
 		preview.setPreserveRatio(true);
-		LayoutHelper.configureImageViewFile(preview, "./resources/placeholder.png");
+		LayoutHelper.configureImageViewFile(preview, "./resources/assets/placeholder.png");
 
 		Button previewBtn = new Button("Search");
 		previewBtn.setStyle("-fx-background-color: #fff; -fx-text-fill: #ff7750; -fx-cursor: hand; -fx-border-color: #ff7750; -fx-border-width: 1; -fx-background-radius: 8px;");
@@ -67,7 +67,7 @@ public class VisualTab extends WriteTab{
 				String c = contentTxt.getText().isBlank() ? "placeholder.png" : contentTxt.getText();
 				
 				try {
-					InputStream stream = new FileInputStream("./resources/" + c);
+					InputStream stream = new FileInputStream("./resources/puns/" + c);
 					Image image = new Image(stream);
 					preview.setImage(image);
 					flag = true;
@@ -75,7 +75,7 @@ public class VisualTab extends WriteTab{
 					InputStream stream;
 					flag = false;
 					try {
-						stream = new FileInputStream("./resources/placeholder.png");
+						stream = new FileInputStream("./resources/assets/placeholder.png");
 						Image image = new Image(stream);
 						preview.setImage(image);
 					} catch (FileNotFoundException e1) {
@@ -95,6 +95,19 @@ public class VisualTab extends WriteTab{
 	protected void createPun() {
 		if(!flag) {
 			ModalBuilder.createRegisterFailedModal("Image is required!").showModal();
+			return;
+		}
+		boolean flag2 = false;
+		String[] ext = {".jpg", ".jpeg", ".png"};
+		for (String s : ext) {
+			if(contentTxt.getText().endsWith(s)) {
+				flag2 = true;
+				break;
+			}
+		}
+		
+		if(!flag2) {
+			ModalBuilder.createRegisterFailedModal("File must be an image!").showModal();
 			return;
 		}
 		

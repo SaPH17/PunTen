@@ -53,7 +53,16 @@ public class LayoutHelper {
 			Image image = new Image(stream);
 			view.setImage(image);
 		} catch (FileNotFoundException e) {
-
+			e.printStackTrace();
+			InputStream stream;
+			try {
+				stream = new FileInputStream("./resources/assets/placeholder.png");
+				Image image = new Image(stream);
+				view.setImage(image);
+			} catch (FileNotFoundException e1) {
+				e1.printStackTrace();
+			}
 		}
 	}
+
 }

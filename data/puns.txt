@@ -1,5 +1,19 @@
-Homophonic,Jho123Star,First Pun,1657808194021,Punny indeed^KodokSalto^1657808194021;hahaha^Acexoul^1657808194021,My very punny pun
-Homographic,KodokSalto,Punny Pun,1657808194021,,Pun Tech,Tech
-Compound,Acexoul,Wu Shang,1657808194021,,Pun 1,Pun 2,Pun 3
-Recursive,KambingGanteng,I Love Kambing,1657808194021,,PunKambing,Kambing
-Visual,Jho123Star,Best Pun,1657808194021,,pun1.jpg
+Homophonic,Jho123star,First Pun,1657808194021,Punny indeed^KodokSalto^1657808194021;hahaha^Acexoul^1657808194021,A very very punny pun
+Homographic,KodokSalto,Punny Pun,1657808194021,,Time flies like an arrow. fruit flies like a banana.,flies
+Compound,Acexoul,Jungle Pun,1657808194021,,Never scam in the jungle,cheetahs are always spotted.
+Recursive,KambingGanteng,I Love This Movie,1658469781354,,May the Fourth be with you,Star wars
+Visual,Jho123star,Punny Image,1657872398941,,taking-control.jpg
+Homophonic,Jho123star,Had my wedding yesterday,1658469521646,,The wedding was so emotional that even the cake was in tiers.
+Homophonic,KambingGanteng,Part Time Butcher,1658468920398,,Yesterday I bet the butcher that she couldn't reach the meat on the top shelf. She refused to take my bet since the steaks were too high
+Homographic,Acexoul,Pun about fish,1658468860060,,You can tune a guitar but you can't tuna fish. Unless you play bass.,tuna fish
+Homographic,Jho123star,You guys like bowling?,1658469028870,,After hours of waiting for the bowling alley to open. We finally got the ball rolling,ball rolling
+Homographic,Acexoul,Based on my experience being a salesman,1658469052753,,Always trust a glue salesman. They tend to stick to their word.,stick
+Compound,KambingGanteng,I laughed at this,1658470062397,,A short psychic broke out of jail.,She was a small medium at large.
+Compound,Acexoul,Amen,1658469201869,,Why can a man never starve in the Great Desert? Because he can eat the sand which is there.,But what brought the sandwiches there?,Noah sent Ham and his descendants mustered and bred
+Recursive,Jho123star,Sigmund Freud,1658469272728,,A Freudian slip is when you say one thing but mean your mother,Freudian Slip
+Visual,KodokSalto,My condition right now,1658468971419,,emotional-baggage.jpg
+Visual,KodokSalto,My fellow chemist,1658469713501,,laughing-gas.png
+Visual,Jho123star,You want to sleep?,1657808194021,,sleeping-pill.jpg
+Visual,KodokSalto,I think thanos will like this,1658469936446,,infinity-pool.jpg
+Visual,KambingGanteng,Sad :(,1658469098284,,dont-go-bacon.png
+Visual,KodokSalto,USB,1658471147830,,usb.jpg

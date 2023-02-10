@@ -9,9 +9,9 @@ import javafx.scene.image.ImageView;
 
 public class Logo extends ImageView{
 	
-	private final String FILE_PATH = "./resources/logo.png";
+	private final String FILE_PATH = "./resources/assets/logo.png";
 	
-	public Logo(int size) {		
+	public Logo(double size) {		
 		setX(10);
 		setY(10);
 		setFitWidth(size);

@@ -51,7 +51,7 @@ public class PunCard extends VBox{
 		authorLbl.setTextFill(Color.web("#c1c1c1"));
 		
 		ImageView commentIcon = new ImageView();
-		LayoutHelper.configureImageViewFile(commentIcon, "./resources/icon-comment.png");
+		LayoutHelper.configureImageViewFile(commentIcon, "./resources/assets/icon-comment.png");
 		commentIcon.setFitWidth(25);
 		commentIcon.setPreserveRatio(true);
 		

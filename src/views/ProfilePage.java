@@ -125,7 +125,7 @@ public class ProfilePage extends Page{
 	}
 
 	private ArrayList<Pun> loadPun() {
-		ArrayList<Pun> punList = (ArrayList<Pun>) Database.getInstance().getAllPun().clone();
+		ArrayList<Pun> punList = (ArrayList<Pun>) Database.getInstance().getAllPun();
 		punList.removeIf(new Predicate<Pun>() {
 			public boolean test(Pun p) {
 				return !p.getAuthor().equals(Session.getSession().getUser().getUsername());

@@ -1,6 +1,8 @@
 package values;
 
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Screen;
 
 public class Constant {
@@ -9,4 +11,4 @@ public class Constant {
 	
 	public static double SCREEN_HEIGHT = Screen.getPrimary().getBounds().getHeight();
 	public static double SCREEN_WIDTH = Screen.getPrimary().getBounds().getWidth();
-}
+} 

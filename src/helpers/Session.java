@@ -7,10 +7,7 @@ public class Session {
 	private User user;
 	private static Session session;
 	
-	private Session() {
-//		user = new User("Jho123Star", "manisbanget", 1);
-//		user = Database.getInstance().getUsers().get(0);
-	}
+	private Session() { }
 	
 	public static Session getSession(){
 		if(session == null) {

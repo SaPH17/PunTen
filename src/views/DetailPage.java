@@ -147,7 +147,7 @@ public class DetailPage extends Page{
 				String a = Session.getSession().getUser().getUsername();
 				
 				if(c.isBlank()) {
-					ModalBuilder.createRegisterFailedModal("Please fill comment!");
+					ModalBuilder.createRegisterFailedModal("Comment must be filled!").showModal();;
 					return;
 				}
 				

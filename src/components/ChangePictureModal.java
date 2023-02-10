@@ -50,10 +50,6 @@ public class ChangePictureModal extends Stage{
 		root.setStyle(
                 "-fx-background-color: rgba(0, 0, 0, 0.45);"
         );
-		Rectangle2D screenBounds = Screen.getPrimary().getBounds();
-		int w = (int) (800 * (1920 / screenBounds.getWidth()));
-		int h = (int) (300 * (1080 / screenBounds.getHeight()));
-		root.setPadding(new Insets(h, w, h, w));
 		
 		ObservableList<Node> list = root.getChildren();
 		list.add(content);
@@ -66,6 +62,8 @@ public class ChangePictureModal extends Stage{
 		
 		configurePane();
 		configureModal();
+		content.maxWidthProperty().bind(root.widthProperty().divide(6));
+		content.maxHeightProperty().bind(root.heightProperty().divide(3));
 	}
 	
 	public void showModal() {
@@ -123,7 +121,7 @@ public class ChangePictureModal extends Stage{
 		confirmBtn = new Button("Confirm");
 
 		confirmBtn.setStyle("-fx-background-color: #ff7750; -fx-text-fill: #fff; -fx-cursor: hand");
-		confirmBtn.setPrefWidth(475);
+		confirmBtn.prefWidthProperty().bind(content.widthProperty());
 		confirmBtn.setPrefHeight(30);
 		confirmBtn.setFont(Font.font("Verdana", FontWeight.NORMAL, 14));
 		

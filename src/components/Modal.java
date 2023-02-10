@@ -18,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -29,6 +30,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import values.Constant;
 
 public class Modal extends Stage{
 	private Stage parent;
@@ -51,9 +53,6 @@ public class Modal extends Stage{
                 "-fx-background-color: rgba(0, 0, 0, 0.45);"
         );
 		Rectangle2D screenBounds = Screen.getPrimary().getBounds();
-		int w = (int) (800 * (1920 / screenBounds.getWidth()));
-		int h = (int) (300 * (1080 / screenBounds.getHeight()));
-		root.setPadding(new Insets(h, w, h, w));
 		
 		ObservableList list = root.getChildren();
 		list.add(content);
@@ -64,6 +63,8 @@ public class Modal extends Stage{
 		
 		configurePane();
 		configureModal();
+		content.maxWidthProperty().bind(root.widthProperty().divide(4));
+		content.maxHeightProperty().bind(root.heightProperty().divide(3));
 	}
 	
 	public void showModal() {
@@ -81,14 +82,15 @@ public class Modal extends Stage{
 
 	private void configurePane() {
 		Label titleLbl = new Label(title);
-		titleLbl.setFont(Font.font("Verdana", FontWeight.BOLD, 20));
+		titleLbl.setFont(Font.font("Verdana", FontWeight.BOLD, 16));
 		titleLbl.setWrapText(true);
 		titleLbl.setTextAlignment(TextAlignment.CENTER);
+		titleLbl.setMinHeight(40);
 
 		ImageView imageView = new ImageView();
 		
-		imageView.setFitWidth(300);
-		imageView.setFitHeight(300);
+		imageView.setFitWidth(400 * (Constant.SCREEN_WIDTH / 1920));
+		imageView.setFitHeight(400 * (Constant.SCREEN_HEIGHT / 1080));
 		imageView.setStyle("-fx-background-size: cover");
 		
 		InputStream stream;
@@ -116,7 +118,7 @@ public class Modal extends Stage{
 		closeBtn = new Button("Close");
 
 		closeBtn.setStyle("-fx-background-color: #ff7750; -fx-text-fill: #fff; -fx-cursor: hand");
-		closeBtn.setPrefWidth(300);
+		closeBtn.prefWidthProperty().bind(content.widthProperty());
 		closeBtn.setPrefHeight(30);
 		closeBtn.setFont(Font.font("Verdana", FontWeight.NORMAL, 14));
 		

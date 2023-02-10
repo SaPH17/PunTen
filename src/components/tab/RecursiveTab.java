@@ -30,13 +30,13 @@ public class RecursiveTab extends WriteTab{
 
 	@Override
 	protected void createUniqueLayout() {
-		TextArea contentTxt = new TextArea();
+		contentTxt = new TextArea();
 		contentTxt.setPrefWidth(250);
 		contentTxt.setFont(font);
 		contentTxt.setPromptText("Whats your pun?");
 		contentTxt.setBorder(new Border(new BorderStroke(Constant.ORANGE_PRIMARY, BorderStrokeStyle.SOLID, new CornerRadii(3), BorderWidths.DEFAULT)));
 	
-		TextField referenceTxt = new TextField();
+		referenceTxt = new TextField();
 		referenceTxt.setPrefWidth(250);
 		referenceTxt.setPrefHeight(40);
 		referenceTxt.setFont(font);
